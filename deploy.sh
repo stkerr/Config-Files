@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Remove existing vim directory
+rm -rf ~/.vim
+
 # Create a .vim directory if necessary 
 if [ ! -d ~/.vim ]; then
     mkdir ~/.vim

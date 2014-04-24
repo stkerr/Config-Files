@@ -39,6 +39,13 @@ set background=dark
 
 colorscheme pablo
 
+" Map tab commands to "t+<>"
+nnoremap tt :tabedit<Space>
+nnoremap tj :tabnext<CR>
+nnoremap tk :tabprev<CR>
+nnoremap td :tabclose<CR>
+nnoremap tn :tabnew<CR>
+
 " Open TList and NERDTree on start up 
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Exit_OnlyWindow=1
