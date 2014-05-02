@@ -59,5 +59,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Copy with mouse and no line numbers
 set mouse=a
 
+set nowrap
+
 " Pathogen modules
 call pathogen#infect()
