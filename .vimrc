@@ -1,7 +1,7 @@
 set number
 syntax on
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=4 
 set autoindent
 set cindent
 
@@ -41,8 +41,8 @@ colorscheme pablo
 
 " Map tab commands to "t+<>"
 nnoremap tt :tabedit<Space>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprev<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
 nnoremap td :tabclose<CR>
 nnoremap tn :tabnew<CR>
 
@@ -59,7 +59,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Copy with mouse and no line numbers
 set mouse=a
 
+" No line wrap
 set nowrap
+
+" OCaml Modules
+filetype plugin indent on
+" Vim needs to be built with Python scripting support, and must be
+" able to find Merlin's executable on PATH.
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+endif
+autocmd FileType ocaml source substitute(system('opam config var share'), '\n$', '', '''') . "/typerex/ocp-indent/ocp-indent.vim"
 
 " Pathogen modules
 call pathogen#infect()
