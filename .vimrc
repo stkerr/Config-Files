@@ -35,8 +35,6 @@ set nocompatible
 set laststatus=2
 set encoding=utf-8
 
-set background=dark
-
 colorscheme pablo
 
 " Map tab commands to "t+<>"
