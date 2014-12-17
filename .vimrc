@@ -73,3 +73,20 @@ autocmd FileType ocaml source substitute(system('opam config var share'), '\n$',
 
 " Pathogen modules
 call pathogen#infect()
+
+" Set Syntastic configuration
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_include_search = 0
+let g:syntastic_cpp_compiler = "g++"
+" let g:syntastic_cpp_compiler_options = " -std=c++11"
+let g:syntastic_java_checkers = []
+let g:syntastic_error_symbol = "X"
+let g:syntastic_style_error_symbol = ">"
+let g:syntastic_warning_symbol = "!"
+let g:syntastic_style_warning_symbol = ">"
+let syntastic_auto_jump = 1
+
