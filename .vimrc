@@ -1,9 +1,23 @@
+" Don't start in compatibility mode
+set nocompatible
+
+" Show what command is in progress
+set showcmd
+
+" Enable incremental searching, as typing is happening, and highlight last matches
+set incsearch
+set hlsearch
+
+" Enable line numbers & syntax higlighting
 set number
 syntax on
+
+" Use spaces instead of tabs
 set tabstop=4
 set shiftwidth=4 
 set autoindent
 set cindent
+set expandtab
 
 " other whitespace and indenting related settings
 set softtabstop=4
@@ -13,9 +27,6 @@ set shiftround
 
 " insert tabs or spaces depending on active indent
 set smarttab
-
-" I prefer to insert spaces
-set expandtab
 
 " This is a personal preference, I copy with 'as is' indent, the use '<' or '>' on visual to change it
 set copyindent
@@ -29,9 +40,7 @@ autocmd filetype make setlocal ts=4 sts=4 sw=4 noexpandtab
 set wildignore+=*.o,*.obj,*.a,*.lib,*.elf
 
 filetype on
-
 " for Powerline
-set nocompatible
 set laststatus=2
 set encoding=utf-8
 
@@ -43,6 +52,8 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap td :tabclose<CR>
 nnoremap tn :tabnew<CR>
+map <F4> :tabnext<CR>
+map <F5> :tabnext<CR>
 
 " Open TList and NERDTree on start up 
 let Tlist_Auto_Highlight_Tag=1
