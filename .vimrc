@@ -99,5 +99,9 @@ let g:syntastic_error_symbol = "X"
 let g:syntastic_style_error_symbol = ">"
 let g:syntastic_warning_symbol = "!"
 let g:syntastic_style_warning_symbol = ">"
-let syntastic_auto_jump = 1
-
+" Disable auto jump, since it might cause you to not be able to open a file if
+" included headers aren't correct.
+let syntastic_auto_jump = 0
+" Disable highlighting, since it is quite slow for large files
+let g:syntastic_enable_highlighting = 0 
+let g:ycm_register_as_syntastic_checker = 0
