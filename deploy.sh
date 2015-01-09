@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Detect the OS 
+uname=$(uname)
+
 # Remove existing vim directory
 rm -rf ~/.vim
 
@@ -8,9 +11,16 @@ if [ ! -d ~/.vim ]; then
     mkdir ~/.vim
 fi
 
-# Copy with backups
-cp -bf .vimrc ~/
-cp -R -f -b .vim/* ~/.vim/
+if [[ ${uname} == "Linux" ]]; then
+    # Copy with backups (on Linux only)
+    cp -bf .vimrc ~/
+    cp -R -f .vim/* ~/.vim/
+elif [[ ${uname} == "Darwin" ]]; then
+    # No backups on OS X
+    cp -f .vimrc ~/
+    cp -R -f .vim/* ~/.vim/
+fi
+
 echo If you have not compiled the YouCompleteMe vim module before running deploy.sh,
 echo please do so.
 echo
