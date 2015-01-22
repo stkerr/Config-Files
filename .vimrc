@@ -111,4 +111,4 @@ let g:syntastic_python_pylint_args = "--indent-string=\"    \""
 set clipboard=unnamedplus
 
 " 80 Columns
-" set colorcolumn=80
+set colorcolumn=80
