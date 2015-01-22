@@ -105,3 +105,10 @@ let syntastic_auto_jump = 0
 " Disable highlighting, since it is quite slow for large files
 let g:syntastic_enable_highlighting = 0 
 let g:ycm_register_as_syntastic_checker = 0
+let g:syntastic_python_pylint_args = "--indent-string=\"    \""
+
+" Use the system clipboard to yank
+set clipboard=unnamedplus
+
+" 80 Columns
+" set colorcolumn=80
