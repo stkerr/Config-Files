@@ -112,3 +112,12 @@ set clipboard=unnamedplus
 
 " 80 Columns
 set colorcolumn=80
+
+" Persistent undo
+if exists("&undodir")
+    set undofile          "Persistent undo! Pure money.
+    let &undodir=&directory
+    set undolevels=500
+    set undoreload=500
+endif
+
