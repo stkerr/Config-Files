@@ -112,3 +112,9 @@ set clipboard=unnamedplus
 
 " 80 Columns
 set colorcolumn=80
+
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/dart-vim-plugin
+endif
+filetype plugin indent on
