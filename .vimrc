@@ -118,3 +118,11 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/dart-vim-plugin
 endif
 filetype plugin indent on
+
+" Persistent undo
+if exists("&undodir")
+    set undofile          "Persistent undo! Pure money.
+    let &undodir=&directory
+    set undolevels=500
+    set undoreload=500
+endif
