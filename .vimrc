@@ -126,3 +126,8 @@ if exists("&undodir")
     set undolevels=500
     set undoreload=500
 endif
+
+" Shortcut for CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
