@@ -27,7 +27,8 @@
 	url = https://github.com/ebfe/vim-racer
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
+    url = https://github.com/majutsushi/tagbar.git
+    ignore = dirty
 [submodule ".vim/bundle/SimpylFold"]
 	path = .vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
