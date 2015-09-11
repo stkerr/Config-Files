@@ -131,3 +131,5 @@ endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" Python folding
+autocmd FileType python setlocal foldmethod=indent

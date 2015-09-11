@@ -29,3 +29,21 @@ echo
 echo "    cd .vim/bundle/youcompleteme/ && ./install.sh"
 echo
 echo Optionally, set YCM_CORES to speed up builds.
+
+# Copy over custom fonts
+if [[ ${uname} == "Linux" ]]; then
+    echo "Installing fonts..."
+    if [ ! -d ~/.fonts ]; then
+        mkdir ~/.fonts
+    fi
+    cp -R -f .fonts/* ~/.fonts
+    fc-cache -f
+    echo "... done"
+elif [[ ${uname} == "Darwin" ]]; then
+    echo "Don't know how to copy/update fonts here. Please manually install .fonts/"
+fi
+
+# Install custom GNOME terminal colors
+if [[ ${uname} == "Linux" ]]; then
+    cd gnome-terminal-colors-monokai && ./install.sh ; cd ..
+fi
