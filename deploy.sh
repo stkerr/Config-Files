@@ -23,13 +23,6 @@ elif [[ ${uname} == "Darwin" ]]; then
     cp -R -f .vim/* ~/.vim/
 fi
 
-echo If you have not compiled the YouCompleteMe vim module before running deploy.sh,
-echo please do so.
-echo
-echo "    cd .vim/bundle/youcompleteme/ && ./install.sh"
-echo
-echo Optionally, set YCM_CORES to speed up builds.
-
 # Copy over custom fonts
 if [[ ${uname} == "Linux" ]]; then
     if [ "$1" = "-no-terminal-updates" ]; then
