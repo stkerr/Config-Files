@@ -130,3 +130,10 @@ endif
 " Shortcut for CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Use a light background on Mac
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed
+  set background=light
+endif

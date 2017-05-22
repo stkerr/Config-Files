@@ -6,6 +6,9 @@ uname=$(uname)
 # Remove existing vim directory
 rm -rf ~/.vim
 
+# Update the git submodules
+git submodule update --init --recursive
+
 # Create a .vim directory if necessary
 if [ ! -d ~/.vim ]; then
     mkdir ~/.vim
@@ -37,7 +40,7 @@ if [[ ${uname} == "Linux" ]]; then
         echo "... done"
     fi
 elif [[ ${uname} == "Darwin" ]]; then
-    echo "Don't know how to copy/update fonts here. Please manually install .fonts/"
+    echo "Don't know how to copy/update fonts on Mac. Please manually install .fonts/"
 fi
 
 # Install custom GNOME terminal colors

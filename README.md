@@ -3,8 +3,8 @@ Config-Files
 
 Various configuration files
 
-This repository makes use of submodules. You must get the submodules, after
-getting this repository. To do so:
+This repository makes use of submodules. The deploy.sh script will pull them
+for you, but you can also do:
 
 * git submodule update --init --recursive
 
