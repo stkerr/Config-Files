@@ -24,6 +24,11 @@ elif [[ ${uname} == "Darwin" ]]; then
     cp -f .vimrc ~/
     cp -f .pylintrc ~/
     cp -R -f .vim/* ~/.vim/
+
+    # Add custom Bash prompt
+    echo <<-EOF >> ~/.profile
+    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)) \$ "
+    EOF
 fi
 
 # Copy over custom fonts
