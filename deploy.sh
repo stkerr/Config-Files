@@ -57,3 +57,5 @@ if [[ ${uname} == "Linux" ]]; then
 	fi
 fi
 
+# Add a custom PS1
+cat < ./custom_bashrc >> ~/.bashrc
