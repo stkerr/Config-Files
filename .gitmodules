@@ -29,3 +29,9 @@
 [submodule ".vim/bundle/vim-yaml-folds"]
 	path = .vim/bundle/vim-yaml-folds
 	url = https://github.com/pedrohdz/vim-yaml-folds.git
+[submodule "gruvbox-material"]
+	path = gruvbox-material
+	url = https://github.com/sainnhe/gruvbox-material.git
+[submodule ".vim/bundle/gruvbox-material"]
+	path = .vim/bundle/gruvbox-material
+	url = https://github.com/sainnhe/gruvbox-material.git

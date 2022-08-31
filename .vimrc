@@ -44,8 +44,6 @@ filetype on
 set laststatus=2
 set encoding=utf-8
 
-colorscheme pablo
-
 " Map tab commands to "t+<>"
 nnoremap tt :tabedit<Space>
 nnoremap tk :tabnext<CR>
@@ -137,3 +135,5 @@ if system('uname -s') == "Darwin\n"
   set clipboard=unnamed
   set background=light
 endif
+
+colorscheme gruvbox-material
