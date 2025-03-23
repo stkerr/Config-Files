@@ -29,8 +29,8 @@ vim.g.mapleader = " " -- Space as leader key
 vim.opt.number = true -- Line numbers (absolute)
 vim.opt.relativenumber = false -- Disable relative line numbers
 vim.opt.expandtab = true -- Spaces over tabs
-vim.opt.shiftwidth = 2 -- 2 spaces for indent
-vim.opt.tabstop = 2 -- 2 spaces for tab
+vim.opt.shiftwidth = 4 -- 2 spaces for indent
+vim.opt.tabstop = 4 -- 2 spaces for tab
 vim.opt.smartindent = true -- Smart auto-indenting
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard for yanking and pasting
 vim.opt.undofile = true -- Enable undofile
@@ -44,6 +44,9 @@ vim.fn.mkdir(vim.fn.stdpath("state") .. "/undo", "p")
 
 -- Load plugins with Lazy.nvim
 require("lazy").setup({
+
+ -- toggleterm for better terminals 
+  {'akinsho/toggleterm.nvim', version = "*", config = true},
  -- Git integration with vim-fugitive
   {
     "tpope/vim-fugitive",
@@ -281,9 +284,12 @@ vim.keymap.set({"n", "v"}, "X", [[""X]], { silent = true }) -- Delete character 
 vim.keymap.set("n", "<LeftMouse>", "<LeftMouse>:startinsert<CR>", { silent = true })
 
 -- Add your favorite Vim keybindings here
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- New tabs
-vim.keymap.set("n", "<leader>n", ":tabnext<CR>", { silent = true }) -- Next tab
-vim.keymap.set("n", "<leader>p", ":tabprev<CR>", { silent = true }) -- Previous tab
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- New tab
+vim.keymap.set("n", "<leader>[", ":tabprev<CR>", { silent = true }) -- Previous tab
+vim.keymap.set("n", "<leader>]", ":tabnext<CR>", { silent = true }) -- Previous tab
+
+vim.keymap.set("n", "<leader>s", ":ToggleTerm direction=vertical<CR>", { silent = true }) -- Start a terminal
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
 
 -- Map Command+/ to comment out lines or selections
 vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { silent = true }) -- Comment line in normal mode
