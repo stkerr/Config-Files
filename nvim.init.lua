@@ -281,7 +281,7 @@ vim.keymap.set({"n", "v"}, "x", [[""x]], { silent = true }) -- Delete character 
 vim.keymap.set({"n", "v"}, "X", [[""X]], { silent = true }) -- Delete character before cursor
 
 -- Map left mouse click to move cursor and enter insert mode
-vim.keymap.set("n", "<LeftMouse>", "<LeftMouse>:startinsert<CR>", { silent = true })
+-- vim.keymap.set("n", "<LeftMouse>", "<LeftMouse>:startinsert<CR>", { silent = true })
 
 -- Add your favorite Vim keybindings here
 vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- New tab
