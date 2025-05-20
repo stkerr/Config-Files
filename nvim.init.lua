@@ -38,6 +38,11 @@ vim.opt.undodir = vim.fn.stdpath("state") .. "/undo" -- Set undo directory
 vim.opt.undolevels = 1000 -- Maximum number of changes that can be undone
 vim.opt.undoreload = 10000 -- Maximum number of lines to save for undo on a buffer reload
 vim.opt.mouse = "a" -- Enable mouse support in all modes
+vim.opt.cursorline = true -- highlight the row where the cursor is
+vim.opt.cursorcolumn = true -- highlight the column where the cursor is
+vim.opt.guicursor="a:hor20-Cursor" -- use an underscore instead of the box
+
+
 
 -- Ensure the undo directory exists
 vim.fn.mkdir(vim.fn.stdpath("state") .. "/undo", "p")
@@ -45,48 +50,66 @@ vim.fn.mkdir(vim.fn.stdpath("state") .. "/undo", "p")
 -- Load plugins with Lazy.nvim
 require("lazy").setup({
 
+ -- Syntax outline
+  { 'simrat39/symbols-outline.nvim', version='*', config = true},
  -- toggleterm for better terminals 
   {'akinsho/toggleterm.nvim', version = "*", config = true},
+    {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" }, -- Load on buffer read/new file
+    config = function()
+      require('illuminate').configure({
+        providers = { 'lsp', 'treesitter', 'regex' },
+        delay = 100,
+        filetypes_denylist = {
+          'dirvish',
+          'fugitive',
+          'NvimTree',
+        },
+        under_cursor = true,
+      })
+    end,
+  },
  -- Git integration with vim-fugitive
   {
     "tpope/vim-fugitive",
     -- No config needed; fugitive works out of the box
      cmd = { "G", "Git" }, -- Lazy-load on :G or :Git commands
-  },
-  -- File explorer
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup {}
-      vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
-    end,
-  },
+    },
+    -- File explorer
+    {
+        "nvim-tree/nvim-tree.lua",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+            require("nvim-tree").setup {}
+            vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
+	end,
+    },
 
-  -- Fuzzy finder (loaded on demand for better performance)
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-    config = function()
-      local ok, telescope = pcall(require, "telescope")
-      if not ok then
-        print("Telescope failed to load")
-        return
-      end
-      telescope.setup {}
-      local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-    end,
-  },
+    -- Fuzzy finder (loaded on demand for better performance)
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        event = "VeryLazy",
+        config = function()
+            local ok, telescope = pcall(require, "telescope")
+            if not ok then
+                print("Telescope failed to load")
+                return
+            end
+            telescope.setup {}
+            local builtin = require("telescope.builtin")
+            vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+            vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+            vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+        end,
+    },
 
-  -- LSP support
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
+    -- LSP support
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local lspconfig = require("lspconfig")
       -- Handler to show LSP startup errors
       local on_attach = function(client, bufnr)
         if not client.server_capabilities.definitionProvider then
@@ -294,3 +317,4 @@ vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
 -- Map Command+/ to comment out lines or selections
 vim.keymap.set("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { silent = true }) -- Comment line in normal mode
 vim.keymap.set("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", { silent = true }) -- Comment selection in visual mode
+
